@@ -242,6 +242,7 @@ class FacebookAdsApi(object):
         files=None,
         url_override=None,
         api_version=None,
+        use_params_as_body=False,
     ):
         """Makes an API call.
         Args:
@@ -297,7 +298,7 @@ class FacebookAdsApi(object):
             params = _top_level_param_json_encode(params)
 
         # Get request response and encapsulate it in a FacebookResponse
-        if method in ('GET', 'DELETE'):
+        if method == 'GET' or (method == 'DELETE' and not use_params_as_body):
             response = self._session.requests.request(
                 method,
                 path,

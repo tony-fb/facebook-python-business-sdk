@@ -236,8 +236,9 @@ class CustomAudienceMixin:
                 is_raw,
                 app_ids,
                 pre_hashed,
-                session,
+                session
             ),
+            use_params_as_body=True,
         )
 
     def share_audience(self, account_ids):
